@@ -29,9 +29,9 @@ public class Cliente {
             String resultado = entrada.readUTF();
 
             if (resultado.equals("true")) {
-                System.out.println("CPF valido!");
+                System.out.println("CPF valido (" + resultado + ")");
             } else {
-                System.out.println("CPF invalido!");
+                System.out.println("CPF invalido!\n\n" + resultado);
             }
             socket.close();
         } catch (Exception e) {

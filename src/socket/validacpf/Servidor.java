@@ -28,9 +28,12 @@ public class Servidor {
 
             // processamento do valor
             System.out.println("CPF informado: " + cpf);
-
+            if (isCpfValido(cpf)) {
+                saida.writeUTF(String.valueOf(isCpfValido(cpf)));
+            } else {
+                saida.writeUTF("Formato invalido!\n\nMensagem: O numero de CPF deve conter 11 digitos (Ex: 111.222.333-00)");
+            }
             // envio dos dados (resultado)
-            saida.writeUTF(String.valueOf(isCpfValido(cpf)));
             socket.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +46,6 @@ public class Servidor {
         Matcher m = p.matcher(cpf);
 
         if (!m.matches()) {
-            System.out.println("CPF invalido!\nO numero de CPF deve conter 11 digitos (Ex: 111.222.333-00");
             return false;
         } else {
             cpf = cpf.replace(".", "");
